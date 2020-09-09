@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title> Task Master </title>
+<link rel="stylesheet" href="../static/style.css" >
+</head>
+
+<body>
+    <h1 style="text-align: center"> Task Master </h1>
+    {% if tasks|length < 1 %}
+    <h4 style="text-align: center">There are no task.Create one below!</h4>
+    {%else%}
+    <div class="main">
+    <table border="1">
+        <tr>
+            <th>Task</th>
+            <th>Created_on</th>
+            <th>End_on</th>
+            <th>Status</th>
+            <th>Action</th>
+
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.created_on }}</td>
+                <td>{{ task.end_on }}</td>
+                <td>{{ task.proj_status }}</td>
+                <td>
+                <a href="/delete/{{task.id}}">Delete</a>
+                <br>
+                <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+    {%endif%}
+
+    <div class="form">
+        <form action= "/" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="date" name="End_on" id="End_on" required>
+            <label for="Status">Task Status</label>
+            <select name="Status" id="Status">
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <input type="submit" class="submit" value="Add Task">
+        </form>
+
+    </div>
+</body>
+</html>

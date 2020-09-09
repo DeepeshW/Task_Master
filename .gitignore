@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+ templates/admin.html 
+ templates/index.html 
+ templates/try1.html 
+ app-sql_injection.py
